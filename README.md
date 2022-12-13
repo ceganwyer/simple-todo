@@ -2,7 +2,21 @@
 A minimal cli-todo app built in rust
 
 ## Installation
-TODO
+Clone this repository:
+
+`git@github.com:ceganwyer/simple-todo.git`
+
+Enter the directory:
+
+`cd simple-todo`
+
+Build the app:
+
+`cargo build --release`
+
+Copy the binary to .cargo/bin:
+
+`cp target/release/simple-todo ~/.cargo/bin`
 
 ## Usage
 Run the app with the command `simple-todo`

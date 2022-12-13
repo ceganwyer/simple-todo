@@ -33,6 +33,11 @@ fn handle_add() -> Result<()> {
 }
 
 fn handle_done() -> Result<()> {
+    if utils::get_todo_count().unwrap() == 0 {
+        println!("{}", "No todos".red());
+        return Ok(());
+    }
+
     if let Some(id) = requestty::prompt_one(prompts::id())?.as_string() {
         todo::done(id.to_string());
     } else {
@@ -43,6 +48,11 @@ fn handle_done() -> Result<()> {
 }
 
 fn handle_remove() -> Result<()> {
+    if utils::get_todo_count().unwrap() == 0 {
+        println!("{}", "No todos".red());
+        return Ok(());
+    }
+
     if let Some(id) = requestty::prompt_one(prompts::id())?.as_string() {
         todo::remove(id.to_string());
     } else {

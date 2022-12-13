@@ -62,6 +62,13 @@ pub fn get_todo_ids() -> Result<Vec<Uuid>> {
     Ok(todos.data.iter().map(|todo| todo.id).collect())
 }
 
+pub fn get_todo_count() -> Result<usize> {
+    let data = fs::read_to_string(get_data_file_path()).unwrap();
+    let todos: structs::Config = from_str(&data)?;
+
+    Ok(todos.data.len())
+}
+
 pub fn save_todos(todos: Vec<structs::Todo>) {
     let config_file = structs::Config { data: todos };
     let json = serde_json::to_string(&config_file).unwrap();
