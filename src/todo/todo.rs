@@ -61,8 +61,9 @@ pub fn list() {
 pub fn done(id: String) {
     let mut todos = utils::get_todos().unwrap();
 
-    if !exists(id.as_str()) {
+    if !exists(id.as_str()) || id.is_empty() {
         println!("{}", "Todo not found".red());
+        return;
     }
 
     for todo in &mut todos {
@@ -80,8 +81,9 @@ pub fn done(id: String) {
 pub fn remove(id: String) {
     let mut todos = utils::get_todos().unwrap();
 
-    if !exists(id.as_str()) {
+    if !exists(id.as_str()) || id.is_empty() {
         println!("{}", "Todo not found".red());
+        return;
     }
 
     todos.retain(|todo| !todo.id.simple().to_string().contains(id.as_str()));
